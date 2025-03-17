@@ -1,0 +1,17 @@
+name: "Sample react CI pipeline / workflow"
+
+on: 
+    push:
+        branches:
+            - main
+            - master
+
+jobs:
+    build-and-test:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: "Setup Node js"
+              uses: actions/setup-node@v2
+              with:
+                  node-version: "14"
