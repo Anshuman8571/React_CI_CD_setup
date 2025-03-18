@@ -3,8 +3,8 @@ import App from '../App';
 import { test } from 'vitest';
 test('renders Vite + React text', () => {
     render(<App />);
-//    const linkElement = screen.getByText(/Vite /+ /React/i); //Assuming "learn react" text is present
-//    expect(linkElement).toBeInTheDocument();
+    const linkElement = screen.getByText(/Vite \+ React/i); //Assuming "learn react" text is present
+    expect(linkElement).toBeInTheDocument();
 });
 
 test('increament count on button click', () => {
