@@ -28,7 +28,7 @@ jobs:
               run: ls
 
             - name: "Run tests"
-              run: npm test
+              run: npm run test
 
             - name: "Run Build"
               run: npm run build
