@@ -15,16 +15,16 @@ pipeline {
         stage('Install & Build') {
             steps {
                 sh '''
-                    echo "📦 Installing dependencies..."
+                    echo "Installing dependencies..."
                     node --version
                     npm --version
-                    npm ci
+                    npm install
 
-                    echo "🏗️ Building React app..."
+                    echo "Building React app..."
                     npm run build
 
                     echo "✅ Build artifacts:"
-                    ls -lh
+                    ls -l
                 '''
             }
         }
