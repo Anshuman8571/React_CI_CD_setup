@@ -1,22 +1,30 @@
-pipeline{
-    agent any
-    stages{
-        stage ('Build'){
-            agent{
-                docker{
-                    image 'node:18-alpine'
-                    reuseNode true //Reuse the node for the next stages
+pipeline {
+    agent {
+        docker {
+            image 'node:18-alpine'
+            args '-u root' // Allows Docker commands if running as root is required
+            reuseNode true
+        }
+    }
 
-                }
-            }
-            steps{
+    environment {
+        NODE_ENV = 'production'
+    }
+
+    stages {
+        stage('Install & Build') {
+            steps {
                 sh '''
-                    ls -l
+                    echo "📦 Installing dependencies..."
                     node --version
                     npm --version
                     npm ci
+
+                    echo "🏗️ Building React app..."
                     npm run build
-                    ls -l
+
+                    echo "✅ Build artifacts:"
+                    ls -lh
                 '''
             }
         }
