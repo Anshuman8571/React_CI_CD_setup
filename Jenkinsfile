@@ -7,9 +7,6 @@ pipeline {
         }
     }
 
-    environment {
-        NODE_ENV = 'production'
-    }
 
     stages {
         stage('Install & Build') {
@@ -21,7 +18,7 @@ pipeline {
                     npm install
 
                     echo "Building React app..."
-                    npm run build
+                    npx vite build
 
                     echo "✅ Build artifacts:"
                     ls -l
