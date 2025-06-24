@@ -22,8 +22,12 @@ pipeline {
         // Ask for Should we Deploy
         stage('Take approval') {
             steps {
-                timeout(time: 1, unit: 'MINUTES') {
-                    input 'Should we deploy?'
+                script {
+                    echo "Waiting for input..."
+                    timeout(time: 1, unit: 'MINUTES') {
+                        input message: 'Should we deploy?'
+                    }
+                    echo "Input received, proceeding!"
                 }
             }
         }
