@@ -20,15 +20,10 @@ pipeline {
             }
         }
         // Ask for Should we Deploy
-        pipeline {
-            agent any
-            stages {
-                stage('Test Input') {
-                    steps {
-                        input message: 'Do you want to continue?'
-                        echo 'Approval received!'
-                    }
-                }
+        stage('Test Input') {
+            steps {
+                input message: 'Do you want to continue?'
+                echo 'Approval received!'
             }
         }
         // code is build from here
