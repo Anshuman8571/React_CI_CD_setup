@@ -20,14 +20,14 @@ pipeline {
             }
         }
         // Ask for Should we Deploy
-        stage('Take approval') {
-            steps {
-                script {
-                    echo "Waiting for input..."
-                    timeout(time: 1, unit: 'MINUTES') {
-                        input message: 'Should we deploy?'
+        pipeline {
+            agent any
+            stages {
+                stage('Test Input') {
+                    steps {
+                        input message: 'Do you want to continue?'
+                        echo 'Approval received!'
                     }
-                    echo "Input received, proceeding!"
                 }
             }
         }
