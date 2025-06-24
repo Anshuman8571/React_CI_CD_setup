@@ -20,9 +20,11 @@ pipeline {
             }
         }
         // Ask for Should we Deploy
-        stage('Take approval'){
-            steps{
-                input 'Should we deploy'
+        stage('Take approval') {
+            steps {
+                timeout(time: 10, unit: 'MINUTES') {
+                    input 'Should we deploy?'
+                }
             }
         }
         // code is build from here
