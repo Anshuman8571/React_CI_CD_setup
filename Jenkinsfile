@@ -22,7 +22,7 @@ pipeline {
         // Ask for Should we Deploy
         stage('Take approval') {
             steps {
-                timeout(time: 10, unit: 'MINUTES') {
+                timeout(time: 1, unit: 'MINUTES') {
                     input 'Should we deploy?'
                 }
             }
