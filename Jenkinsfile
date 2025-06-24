@@ -19,6 +19,12 @@ pipeline {
                 checkout scm //checkout the code from github
             }
         }
+        // Ask for Should we Deploy
+        stage('Take approval'){
+            steps{
+                input 'Should we deploy'
+            }
+        }
         // code is build from here
         stage('Build'){
             agent{
